@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "web/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "web/$1"
+    }
+  ],
+  "env": {
+    "GEMINI_API_KEY": "@gemini-api-key",
+    "ETHERSCAN_API_KEY": "@etherscan-api-key",
+    "BASESCAN_API_KEY": "@basescan-api-key",
+    "ARBISCAN_API_KEY": "@arbiscan-api-key"
+  }
+}
