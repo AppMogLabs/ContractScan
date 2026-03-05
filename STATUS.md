@@ -1,8 +1,8 @@
 # ContractScan - Project Status
 
-**Last Updated:** 2026-03-04
+**Last Updated:** 2026-03-05
 
-## Current Phase: Phase 2 IN PROGRESS 🚧
+## Current Phase: Phase 3 IN PROGRESS 🚧
 
 ### Phase 1 Completed ✅
 - ✅ Architecture.md (17KB, 14 sections)
@@ -10,34 +10,46 @@
 - ✅ README.md with setup instructions
 - ✅ GitHub push complete (commit 8f6445d)
 
-### Phase 2 Components Built 🚧
+### Phase 2 Completed ✅
 - ✅ Block explorer integration (Etherscan/Basescan/Arbiscan)
 - ✅ Gemini 2.0 Flash LLM analysis with cost tracking
 - ✅ Risk assessment engine
 - ✅ LRU caching layer (24hr TTL)
 - ✅ Rate limiting (10/hr, 30/day per user)
 - ✅ Follow-up Q&A (30min sessions, 20 questions)
-- 🚧 Integration testing needed
-- 🚧 Web app (Next.js) - not started
+- ✅ Integration testing completed
+- ✅ GitHub push complete (commit 990e208)
 
-### Bot Features Working
-- /start - Welcome message
-- /help - Shows rate limit status
-- /scan <address> - Full contract analysis with AI
-- /clear - Clear conversation history
-- Direct address input - Auto-detects network and analyzes
-- Follow-up questions - Context-aware Q&A for 30 minutes
+### Phase 3 Components Built 🚧
+- ✅ Next.js 14 web app scaffolded
+- ✅ Shared lib modules copied (types, cache, rate-limiter, contract-fetcher, llm-analyzer)
+- ✅ API routes: /api/scan and /api/follow-up
+- ✅ Landing page with search
+- ✅ Dynamic scan report page at /scan/[address]
+- ✅ ScanReport component with full UI
+- 🚧 Environment configuration needed
+- 🚧 Deployment to Vercel pending
+
+### Web App Features Working
+- Address search on homepage
+- Auto-network detection (Ethereum, Base, Arbitrum)
+- Shareable URLs: `/scan/0x...`
+- Risk score visualization
+- Key functions display
+- Admin privileges analysis
+- Risk identification
+- Recommendations
 
 ### Architecture
-- `src/lib/contract-fetcher.ts` - Block explorer APIs
-- `src/lib/llm-analyzer.ts` - Gemini 2.0 Flash integration
-- `src/lib/cache.ts` - LRU cache for analysis results
-- `src/lib/rate-limiter.ts` - Token bucket rate limiting
-- `src/types/index.ts` - TypeScript type definitions
+- `web/lib/` - Shared modules (cache, rate-limiter, contract-fetcher, llm-analyzer, types)
+- `web/app/api/scan/route.ts` - Contract analysis API
+- `web/app/api/follow-up/route.ts` - Follow-up questions API
+- `web/app/page.tsx` - Landing page
+- `web/app/scan/[address]/page.tsx` - Report page (SSR)
+- `web/components/ScanReport.tsx` - Report UI component
 
 ### Environment Variables Required
 ```
-TELEGRAM_BOT_TOKEN=
 GEMINI_API_KEY=
 ETHERSCAN_API_KEY=
 BASESCAN_API_KEY=
@@ -45,13 +57,12 @@ ARBISCAN_API_KEY=
 ```
 
 ## Deployment Status
-- GitHub: ✅ Phase 2 code ready to push
-- Railway staging: Pending env vars setup
-- Production: Pending
+- Bot (Phase 1-2): ✅ Code pushed, ready for Railway deployment
+- Web App (Phase 3): 🚧 Code ready, needs env vars + Vercel deployment
 
 ## Next Steps
-1. Push Phase 2 to GitHub
-2. Configure Railway with environment variables
-3. Deploy to staging
-4. Test with real contracts (USDT, USDC, etc.)
-5. Build web app (Phase 3)
+1. Configure environment variables
+2. Deploy web app to Vercel
+3. Test with real contracts (USDT, USDC, etc.)
+4. Deploy bot to Railway
+5. Update documentation
